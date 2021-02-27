@@ -5,8 +5,10 @@ password = input("Enter your password:")
 
 if slovnik.get(name) == password:
     print("Thank you for registration.")
-else:
+
+elif slovnik.get(name) != password:
     print("Wrong username or password, please try again.")
+    quit()
 
 if name in slovnik:
     print("Welcome to the app:", name)
@@ -59,20 +61,21 @@ num_nu = 0
 sum_num = 0
 length_w = []
 
-for word in TEXTS[txt_selcetion].split():
-    i = word.strip(",.")
-    num_str += 1
-    length_w.append(len(word))
 
-    if word[0].isupper():
-        upper += 1
-    elif word.istitle():
+for word in TEXTS[txt_selcetion].split():
+    TEXTS = word.strip(",.")
+    num_str += 1
+    length_w.append(len(TEXTS))
+
+    if word[0].istitle():
         title += 1
-    elif word.islower():
+    elif word.isupper():
+        upper += 1
+    if word.islower():
         lower += 1
-    elif word.isnumeric():
+    if word.isnumeric():
         num_nu += 1
-        sum_num += int(i)
+        sum_num += int(TEXTS)
 
 print('=' * 40)
 print(f"There are {num_str} words in the selceted texts.")
